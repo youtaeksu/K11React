@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="mydiv1"></div>
+    <div id="mydiv2"></div>
+        
+    <script type="text/babel">
+    /*
+    ReactDOM.render() 
+        : HTML코드를 웹브라우저의 지정된 DOM엘리먼트에 렌더링 해주는 함수
+        형식]
+            ReactDOM.render(HTML코드(JSX) 혹은 컴포넌트, 표시할 DOM 엘리먼트);
+        ※첫번째인자로 사용되는 HTML코드는 반드시 하나의 최상위 태그만으로 
+        표현되어야 한다.
+        Ex)
+            <div></div>
+            <div></div> => 이와 같은 경우 에러가 발생한다. 최상위 태그가 2개이다. 
+
+            <div>
+                <div></div>
+                <div></div>
+            </div>  => 정상적으로 출력된다. 최상위 태그가 1개이다.             
+    */
+
+    //출력할 HTML을 상수로 선언한다. 
+    const myElement = (  
+        <div>
+            <h3>렌더링시 최상위 태그는 무조건 한개만 있어야 한다.</h3>
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                </tr>
+                <tr>
+                    <td>알라딘</td>
+                </tr>
+                <tr>
+                    <td>자스민</td>
+                </tr>
+            </table>
+        </div> 
+    );
+    //클래스형 컴포넌트 정의
+    class MyClass extends React.Component {
+        render() {
+            return <h1>React.Component를 상속한 MyClass</h1>
+        }
+    }
+
+    //상수로 선언한 HTML과 컴포넌트를 각 엘리먼트에 렌더링 한다.
+    ReactDOM.render(myElement, document.getElementById('mydiv1'));
+    ReactDOM.render(<MyClass />, document.getElementById('mydiv2'));
+    </script>
+</body>
+</html>

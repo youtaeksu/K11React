@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02ECMAScript04.html</title>
+    <script>
+    //부모클래스
+	class Car { 
+        //생성자함수       
+		constructor(b) {           
+            //멤버변수
+			this.brand = b;
+		}
+        //멤버함수 : 화살표함수를 통해 정의한다. 항상 this가 유지된다.
+		showCar = () => {
+			return '내 자동차의 제조사는 '+ this.brand +' 입니다.';
+		}
+	}
+    //콘솔 출력시 빨간색으로 표현된다. 구분용도로 사용된다. 
+	console.error("ES6의 Class 생성"); 
+	mycar = new Car("아우디");  
+	console.log(mycar.brand);       
+	console.log(mycar.showCar());
+    </script>
+    <script>
+    //자식클래스 : Car클래스를 상속한다. 
+    class Model extends Car {
+        constructor(b, m) {
+            //부모의 생성자 호출
+            super(b);  
+            this.model = m;
+        }  
+        //상속했으므로 부모쪽 멤버함수를 호출할 수 있다.
+        showModel() {
+            return this.showCar() + ' 내 자동차의 이름은 '+ 
+                this.model +' 입니다.';
+        }
+    }      
+    console.error("ES6의 상속");
+    modelCar = new Model("Ford", "Mustang");    
+    console.log(modelCar.showModel());
+    </script>
+</head>
+<body>
+      
+</body>
+</html>

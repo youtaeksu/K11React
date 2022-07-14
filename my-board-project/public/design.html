@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+        border: 5px solid #727272; margin: 10px; color: #111111; padding: 10px;
+        }
+        .addInput{
+            border: 1px solid black; height: 20px; margin-right: 5px; padding: 1px 10px;
+            width: 100px; font-weight: bold; color: red;
+        }
+        .addBtn{
+            background-color: black; border: 1px solid black; height: 24px;
+            position: relative; top: 1px; color: white;
+        }
+        .disInput{
+            border: 1px solid black; padding: 10px; text-align: center;
+            width: 100px; font-weight: bold; color: blue; font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="App">
+        <h2>Root 컴포넌트</h2>
+        <div>
+            <h3>숫자 증가(Depth1)</h3>
+            <div>
+                <h4>숫자 증가 Form(Depth2)</h4>
+                <p>
+                    숫자를 변경한 후 증가 버튼을 누르세요.
+                </p>
+                <input type="number" class="addInput" value="1">
+                <input type="button" class="addBtn" value="증가" onClick="">
+            </div>
+        </div>
+        <div>
+            <h3>숫자 출력(Depth1)</h3>
+            <div>
+                <h4>숫자 출력(Depth2)</h4>
+                <input type="text" class="disInput" value="0" readOnly ></input>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

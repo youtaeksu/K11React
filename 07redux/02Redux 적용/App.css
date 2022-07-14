@@ -1,0 +1,15 @@
+div{
+  border: 5px solid #727272; margin: 10px; color: #111111; padding: 10px;
+  }
+  .addInput{
+      border: 1px solid black; height: 20px; margin-right: 5px; padding: 1px 10px;
+      width: 100px; font-weight: bold; color: red;
+  }
+  .addBtn{
+      background-color: black; border: 1px solid black; height: 24px;
+      position: relative; top: 1px; color: white;
+  }
+  .disInput{
+      border: 1px solid black; padding: 10px; text-align: center;
+      width: 100px; font-weight: bold; color: blue; font-size: 2em;
+  }

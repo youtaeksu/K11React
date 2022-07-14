@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--  
+    filter()함수
+        : array의 원소의 갯수만큼 콜백함수가 반복호출되어, 조건에 맞는
+        원소만 반환하여 새로운 배열을 생성한다.         
+        
+        형식]
+            var oldArr = [1,2,3,....]
+            var newArr = oldArr.filter(
+                callBackFunction(원소의값, 원소의인덱스, 배열객체){
+                    return 필터링 할 조건;
+                },
+                thisArgs
+            );
+            형식 마지막의 thisArgs는 filter내부의 콜백함수에서 사용할 값으로 
+            필요하지 않다면 생략이 가능하다. 생략할 경우 undefined이 전달된다.
+-->
+<script>
+    console.error("filterTest1() called..기본사용법");    
+    (function filterTest1() {
+        //기본배열 선언
+        var oldArray = [1,2,3,4,5];
+        //기본배열의 원소갯수만큼 반복하여 각 항목을 출력한다. 
+        var newArray = oldArray.filter(function(currentVal, index, array){
+            console.log("현재인자값"+ currentVal);
+            console.log("인덱스"+ index);
+            console.log("배열"+ array);
+        });
+    })(); 
+    /*
+    함수 정의 및 즉시 호출
+    (function 함수명(){
+        실행부;
+    })();
+    */
+    
+    console.error("filterTest2() called..조건에 맞는 엘리먼트만 추출");
+    (function filterTest2(){
+        var oldArray = [1,2,3,4,5];
+        var newArray = oldArray.filter(function(currentVal, index, array) {
+            //각 원소 중 3이하인 값들만 추출하여 새로운 배열로 저장된다. 
+            return currentVal<=3;
+        });
+        console.log("배열:"+ newArray);
+    })();
+    
+
+    console.error("filterTest3() called..JSON 객체형배열 사용 및 검색");
+	(function filterTest3(){	
+		var oldJsonArray = [
+			{name : "혜빈", salary : 100000},
+			{name : "제인", salary : 200000},
+			{name : "나윤", salary : 300000},
+			{name : "주이", salary : 400000},
+			{name : "아인", salary : 500000},
+			{name : "낸시", salary : 600000}
+		];
+
+		var newJsonArray = oldJsonArray.filter(function(currentVal, index, array) {
+			console.log("현재요소의 이름="+ currentVal.name);
+            //JSON객체의 salary(급여)가 300000이상인 것만 추출하여 새로운 배열로 저장.
+			return currentVal.salary>=300000;  
+		}, undefined);
+		console.log("newJsonArray", newJsonArray);		
+	})();
+
+
+    console.error("filterTest4() called..thisArg 매개변수 사용하기");
+    (function filterTest4(){
+        //기본배열
+        var oldArray = [1, 2, 3, 4, 5, 50, 100];
+        //매개변수로 사용할 JSON객체
+        var thisArgs = {min:1, max:10};
+        //콜백함수정의. 1~10 사이의 요소만 추출한다.
+        function getMinMax(value){
+            return value>=this.min && value<=this.max;
+        }		
+        var newArray = oldArray.filter(getMinMax, thisArgs);
+        console.log('thisArgs사용결과', newArray);
+    })();
+</script>
+</body>
+</html>

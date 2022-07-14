@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--      
+    forEach() 함수
+        : array의 원소의 갯수만큼 반복하여 콜백함수를 호출한다. 
+        형식은 filter()와 유사하다. 
+-->
+<script>
+    //콜백함수에서의 반환값이 없으므로 단순히 5번 반복되어 출력된다. 
+    console.error("forEachTest1() called..기본사용법");    
+    (function forEachTest1(){
+        console.error("기본사용법");
+        var oldArray = [1,2,3,4,5];
+        //원소의 갯수인 5번 반복호출된다. 
+        oldArray.forEach(function(currentVal, index, array){
+            console.log('현재값:'+currentVal, '인덱스:'+index, '배열:'+array);           
+        });
+    })(); 
+
+ 
+    console.error("forEachTest2() called..배열 요소의 합계");    
+    (function forEachTest2(){
+        //기본배열선언
+        var oldArray = [1,2,3,4,5];
+        //콜백함수 내에서 사용할 변수를 선언
+        var sum = 0;
+        //콜백함수를 외부에 선언한다. 이때 매개변수는 1개만 사용한다. 
+        //인덱스와 배열은 필요하지 않은경우 생략할 수 있다. 
+        function getSum(currentVal){
+            //현재 원소를 변수에 누적해서 더한다. 
+            sum += currentVal; 
+        }
+        oldArray.forEach(getSum);
+        //1~5까지의 합을 출력한다. 
+        console.log(sum); 
+    })();
+
+
+    console.error("forEachTest3() called..thisArgs 매개변수 사용하기");    
+    (function forEachTest3(){
+        var oldArray = [1,2,3,4,5,6,7,8,9,10];
+        var sum = 0;
+        function getSum(currentVal){
+            /*
+            thisArgs로 전달되는 JSON객체를 조건에 활용한다. 
+            3이상 7이하인 원소들만 변수에 누적해서 더한다.
+            */
+            if(currentVal>=this.min && currentVal<=this.max){
+                sum += currentVal;
+            }
+        }
+        var thisArgs = {min:3, max:7};
+        oldArray.forEach(getSum, thisArgs);
+        //3~7까지의 합을 출력한다. 
+        console.log(sum); 
+    })();
+</script>    
+</body>
+</html>
